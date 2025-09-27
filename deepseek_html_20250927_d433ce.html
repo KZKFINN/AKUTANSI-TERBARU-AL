@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Akuntansi Multi-User Cloud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📊 Akuntansi Cloud</h1>
+                <p class="subtitle">Data tersimpan di cloud - Akses dari device mana saja</p>
+            </div>
+            <div id="authSection" class="auth-section">
+                <button id="loginBtn" class="auth-btn">Login</button>
+                <button id="registerBtn" class="auth-btn">Daftar</button>
+            </div>
+            <div id="userSection" class="user-info" style="display: none;">
+                <span id="userEmail"></span>
+                <span id="syncStatus" class="sync-status"></span>
+                <button id="logoutBtn" class="auth-btn logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Pilihan Storage -->
+        <div id="storageSelector" class="card" style="display: none; margin-bottom: 20px;">
+            <h3>🔄 Pilih Mode Penyimpanan</h3>
+            <div class="storage-options">
+                <label>
+                    <input type="radio" name="storage" value="cloud" checked> 
+                    Cloud Storage (Data tersimpan online, bisa akses dari device lain)
+                </label>
+                <label>
+                    <input type="radio" name="storage" value="local"> 
+                    Local Storage (Hanya di device ini, lebih cepat)
+                </label>
+            </div>
+            <button id="saveStoragePref" class="btn-secondary">Simpan Preference</button>
+        </div>
+        
+        <!-- Halaman Login/Register -->
+        <div id="authPage" class="page active">
+            <div class="auth-container">
+                <div class="cloud-notice">
+                    <div class="cloud-icon">☁️</div>
+                    <h3>Data Tersimpan di Cloud</h3>
+                    <p>Login dari device mana saja, data Anda akan tetap tersedia</p>
+                </div>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" id="loginTab">Login</div>
+                        <div class="tab" id="registerTab">Daftar</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="loginContent">
+                        <h2>Login ke Akun Anda</h2>
+                        <form id="loginForm" class="auth-form">
+                            <div class="form-group">
+                                <label for="loginEmail">Email</label>
+                                <input type="email" id="loginEmail" required>
+                                <div class="error-message" id="loginEmailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" required>
+                                <div class="error-message" id="loginPasswordError"></div>
+                            </div>
+                            <button type="submit" class="btn-primary">Login</button>
+                        </form>
+                    </div>
+                    
+                    <div class="tab-content" id="registerContent">
+                        <h2>Daftar Akun Baru</h2>
+                        <form id="registerForm" class="auth-form">
+                            <div class="form-group">
+                                <label for="registerName">Nama Lengkap</label>
+                                <input type="text" id="registerName" required>
+                                <div class="error-message" id="registerNameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail">Email</label>
+                                <input type="email" id="registerEmail" required>
+                                <div class="error-message" id="registerEmailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword">Password</label>
+                                <input type="password" id="registerPassword" required>
+                                <div class="error-message" id="registerPasswordError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerConfirmPassword">Konfirmasi Password</label>
+                                <input type="password" id="registerConfirmPassword" required>
+                                <div class="error-message" id="registerConfirmPasswordError"></div>
+                            </div>
+                            <button type="submit" class="btn-primary">Daftar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Halaman Dashboard -->
+        <div id="dashboardPage" class="page" style="display: none;">
+            <!-- Konten dashboard sama seperti sebelumnya -->
+        </div>
+        
+        <footer>
+            <p>Website Akuntansi Cloud &copy; 2023 - Data tersimpan aman di cloud</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="cloud-storage.js"></script>
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
